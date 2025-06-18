@@ -42,7 +42,14 @@ const products = [
     name: "ALYA SKIN CLEANSER",
     description: "Chair of the Health Training Committee",
     price: "FROM $25.00",
-    image: "/assets/images/product-1.jpg" // Your product image
+    image: "/assets/product-1.png" // Your product image
+  },
+  {
+    id: 2,
+    name: "ALYA SKIN CLEANSER",
+    description: "Chair of the Health Training Committee",
+    price: "FROM $25.00",
+    image: "/assets/product-2.png" // Your product image
   },
   // Add more products
 ];

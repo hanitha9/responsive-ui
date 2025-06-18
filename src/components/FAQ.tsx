@@ -1,3 +1,4 @@
+'use client';
 import { useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useAnimation } from '@/hooks/useAnimation';

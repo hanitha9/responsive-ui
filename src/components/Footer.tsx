@@ -1,46 +1,29 @@
-// components/Footer.tsx
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-12 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-[#1A2E2E] text-white py-12 px-6 relative">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-xl font-bold mb-4">SKINCARE</h3>
-          <p className="text-gray-400">
-            Premium skincare products that restore, protect, and enhance your natural glow.
-          </p>
+          <h3 className="text-2xl font-bold mb-4">Join The Skincare Community Now.</h3>
         </div>
-        
         <div>
-          <h4 className="font-bold mb-4">Shop</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 hover:text-white">All Products</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Serum</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Sunscreen</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Bundle</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 className="font-bold mb-4">About</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 hover:text-white">Our Story</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Ingredients</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Sustainability</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h4 className="font-bold mb-4">Legal</h4>
-          <ul className="space-y-2">
-            <li><a href="#" className="text-gray-400 hover:text-white">Terms of Service</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-white">Cookies Policy</a></li>
-          </ul>
+          <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
+          <p>contact.skincare.com</p>
         </div>
       </div>
-      
-      <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center text-gray-400">
-        <p>© {new Date().getFullYear()} Skincare. All rights reserved.</p>
+      <div className="mt-4 flex justify-between text-sm">
+        <div className="space-x-4">
+          <a href="#" className="text-gray-300 hover:text-white">Facebook</a>
+          <a href="#" className="text-gray-300 hover:text-white">Instagram</a>
+          <a href="#" className="text-gray-300 hover:text-white">YouTube</a>
+        </div>
+        <div className="space-x-4">
+          <a href="#" className="text-gray-300 hover:text-white">Terms of Service</a>
+          <a href="#" className="text-gray-300 hover:text-white">Privacy Policy</a>
+          <a href="#" className="text-gray-300 hover:text-white">Cookies Policy</a>
+        </div>
+      </div>
+      <div className="absolute inset-x-0 bottom-4 text-center text-4xl font-bold text-gray-200 opacity-20 pointer-events-none">
+        SKINCARE
       </div>
     </footer>
   );

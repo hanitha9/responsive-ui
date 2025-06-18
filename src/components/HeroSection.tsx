@@ -8,7 +8,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/images/hero-bg.jpg" // Your skincare product shot
+          src="/assets/images/hero-bg.png" // Your skincare product shot
           alt="Skincare products"
           fill
           className="object-cover"

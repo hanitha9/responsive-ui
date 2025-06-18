@@ -1,55 +1,45 @@
-// src/components/Products.tsx
 import Image from 'next/image';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { PRODUCTS } from '@/util/constants';
 
 export default function Products() {
-  return (
-    <div className="bg-white py-12">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-serif font-bold text-center mb-12">
-          Skincare That Brings Out Your Natural Radiance
-        </h2>
+  const productRef = useRef(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="border rounded-lg overflow-hidden shadow-sm">
+  const slideProduct = (direction) => {
+    gsap.to(productRef.current, {
+      x: direction === 'left' ? '-=300' : '+=300',
+      duration: 0.5,
+      ease: 'power2.inOut',
+    });
+  };
+
+  return (
+    <section className="py-12 px-4 bg-[#F5F1E9]">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-serif font-bold text-center mb-12">Skincare That Brings Out Your Natural Radiance</h2>
+        <div ref={productRef} className="flex overflow-hidden space-x-8">
+          {PRODUCTS.map((product) => (
+            <div key={product.id} className="w-64 flex-shrink-0 border rounded-lg overflow-hidden shadow-sm">
               <div className="h-64 relative">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={product.image} alt={product.name} fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold">{product.name}</h3>
                 <p className="text-gray-600 my-2">{product.description}</p>
                 <p className="text-lg font-medium">{product.price}</p>
-                <button className="mt-4 w-full py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors">
+                <button className="mt-4 w-full py-2 border border-[#1A2E2E] rounded-full hover:bg-[#1A2E2E] hover:text-white transition-colors">
                   Add to Cart
                 </button>
               </div>
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-4 space-x-4">
+          <button onClick={() => slideProduct('left')} className="p-2 bg-[#1A2E2E] text-white rounded-full hover:bg-gray-800">←</button>
+          <button onClick={() => slideProduct('right')} className="p-2 bg-[#1A2E2E] text-white rounded-full hover:bg-gray-800">→</button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-const products = [
-  {
-    id: 1,
-    name: "ALYA SKIN CLEANSER",
-    description: "Chair of the Health Training Committee",
-    price: "FROM $25.00",
-    image: "/assets/product-1.png" // Your product image
-  },
-  {
-    id: 2,
-    name: "ALYA SKIN CLEANSER",
-    description: "Chair of the Health Training Committee",
-    price: "FROM $25.00",
-    image: "/assets/product-2.png" // Your product image
-  },
-  // Add more products
-];

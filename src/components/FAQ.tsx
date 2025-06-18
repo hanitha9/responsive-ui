@@ -13,7 +13,7 @@ const faqs = [
 
 export default function FAQ() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const answerRefs = useRef<(HTMLDivElement | null)[]>(new Array(faqs.length).fill(null));
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -43,7 +43,13 @@ export default function FAQ() {
                 <h3 className="text-lg font-medium">{faq.question}</h3>
                 <span className="text-xl">{openFaq === index ? '−' : '+'}</span>
               </button>
-              <div ref={(el) => (answerRefs.current[index] = el)} className="overflow-hidden" style={{ height: 0, opacity: 0 }}>
+              <div
+                ref={(el) => {
+                  answerRefs.current[index] = el; // Assign without returning
+                }}
+                className="overflow-hidden"
+                style={{ height: 0, opacity: 0 }}
+              >
                 <p className="pb-4 text-gray-600">{faq.answer}</p>
               </div>
             </div>

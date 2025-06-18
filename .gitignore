@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+.next/
+out/
+
+# Build files
+*.log
+.npm
+.pnpm
+
+# Environment variables
+.env*.local
+
+# IDE/Editor
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+*.swp
+
+# Optional - if using npm
+package-lock.json
+
+# Optional - if using pnpm
+pnpm-lock.yaml
+
+# Optional - if using Yarn
+yarn.lock
+yarn-error.log

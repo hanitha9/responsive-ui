@@ -20,20 +20,22 @@ export default function HeroSection() {
   // Text Fill Animation for First Paragraph
   useAnimation(
     (target) => {
-      const words = target.querySelectorAll('.word');
-      return gsap.fromTo(
-        words,
-        { opacity: 0.3 },
-        {
-          opacity: 1,
-          duration: 0.5,
-          delay: (index) => index * 0.1,
-          scrollTrigger: {
-            trigger: target,
-            start: 'top 80%',
-          },
-        }
-      );
+      if (target) {
+        const words = target.querySelectorAll('.word');
+        return gsap.fromTo(
+          words,
+          { opacity: 0.3 },
+          {
+            opacity: 1,
+            duration: 0.5,
+            delay: (index) => index * 0.1,
+            scrollTrigger: {
+              trigger: target,
+              start: 'top 80%',
+            },
+          }
+        );
+      }
     },
     paraRef
   );

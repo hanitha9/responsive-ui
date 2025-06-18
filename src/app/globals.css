@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --vh: 1vh; /* For mobile viewport fix */
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom font faces */
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Georgia';
+    src: url('/fonts/Georgia-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+}

@@ -2,28 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --vh: 1vh; /* For mobile viewport fix */
-  }
-  
-  /* Smooth scroll behavior */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Custom font faces */
-  @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Georgia';
-    src: url('/fonts/Georgia-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
+@layer components {
+  .btn-primary {
+    @apply bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors;
   }
 }

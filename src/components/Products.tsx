@@ -1,8 +1,7 @@
-'use client'; // Added to ensure it works as a Client Component (though not strictly needed here unless state/effects are added)
 import Image from 'next/image';
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { PRODUCTS } from '@/util/constants'; // Try alias first
+import { PRODUCTS } from '@/util/constants'; // Alias import based on tsconfig.json
 
 export default function Products() {
   const productRef = useRef(null);

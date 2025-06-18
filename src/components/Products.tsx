@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { PRODUCTS } from '@/util/constants'; // Alias import based on tsconfig.json
+import { PRODUCTS } from '@/utils/constants'; // Alias import based on tsconfig.json
 
 export default function Products() {
   const productRef = useRef(null);

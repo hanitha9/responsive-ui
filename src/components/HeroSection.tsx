@@ -19,7 +19,7 @@ export default function HeroSection() {
 
   // Text Fill Animation for First Paragraph
   useAnimation(
-    (target) => {
+    (target: HTMLElement | null) => {
       if (!target) return gsap.fromTo({}, {}, {}); // No-op Tween if target is null
       const words = target.querySelectorAll('.word');
       return gsap.fromTo(

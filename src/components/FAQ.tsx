@@ -1,81 +1,59 @@
-// components/FAQ.tsx
-'use client';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { gsap } from 'gsap';
+import { useAnimation } from '@/hooks/useAnimation';
 
 const faqs = [
-  {
-    question: "Are your products safe for sensitive skin?",
-    answer: "Yes, our products are formulated to be gentle and suitable for sensitive skin types."
-  },
-  {
-    question: "Are your products cruelty-free?",
-    answer: "Absolutely! Our products are cruelty-free, and most are vegan."
-  },
-  {
-    question: "What's your return policy?",
-    answer: "We offer a 30-day return policy for unused products with original packaging."
-  },
-  {
-    question: "Do you ship internationally?",
-    answer: "Yes, we ship to most countries worldwide."
-  },
-  {
-    question: "How do I choose the right product?",
-    answer: "Visit our product guide or contact our skincare specialists for personalized recommendations."
-  }
+  { question: "Are your products safe for sensitive skin?", answer: "Yes, our products are gentle for sensitive skin." },
+  { question: "Are your products cruelty-free?", answer: "Absolutely, all are cruelty-free." },
+  { question: "What's your return policy?", answer: "30-day return for unused products." },
+  { question: "Do you ship internationally?", answer: "Yes, to most countries." },
+  { question: "How do I choose the right product?", answer: "Visit our guide or contact us." },
 ];
 
 export default function FAQ() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+    const answer = answerRefs.current[index];
+    useAnimation(
+      (target) => gsap.to(target, {
+        height: openFaq === index ? 0 : 'auto',
+        opacity: openFaq === index ? 0 : 1,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      }),
+      answer
+    );
   };
 
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-[#F5F1E9]">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
-          Answers to Your Skincare Questions, All in One Place.
-        </h2>
-        
+        <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Answers to Your Skincare Questions, All in One Place.</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-200 pb-4">
               <button
-                onClick={() => toggleFAQ(index)}
+                onClick={() => toggleFaq(index)}
                 className="flex justify-between items-center w-full text-left py-4"
               >
                 <h3 className="text-lg font-medium">{faq.question}</h3>
-                <span className="text-xl ml-4">
-                  {activeIndex === index ? '−' : '+'}
-                </span>
+                <span className="text-xl">{openFaq === index ? '−' : '+'}</span>
               </button>
-              
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <p className="pb-4 text-gray-600">{faq.answer}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div ref={(el) => (answerRefs.current[index] = el)} className="overflow-hidden" style={{ height: 0, opacity: 0 }}>
+                <p className="pb-4 text-gray-600">{faq.answer}</p>
+              </div>
             </div>
           ))}
         </div>
-        
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold mb-6">Join The Skincare Community Now.</h3>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-700 hover:text-black">Facebook</a>
-            <a href="#" className="text-gray-700 hover:text-black">Instagram</a>
-            <a href="#" className="text-gray-700 hover:text-black">YouTube</a>
+            <a href="#" className="text-gray-700 hover:text-[#1A2E2E]">Facebook</a>
+            <a href="#" className="text-gray-700 hover:text-[#1A2E2E]">Instagram</a>
+            <a href="#" className="text-gray-700 hover:text-[#1A2E2E]">YouTube</a>
           </div>
         </div>
       </div>
